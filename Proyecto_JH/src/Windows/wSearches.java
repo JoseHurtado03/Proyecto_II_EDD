@@ -5,6 +5,10 @@
  */
 package Windows;
 
+import javax.swing.JOptionPane;
+import proyecto_jh.Searches;
+import static Windows.wMain.tabla;
+
 /**
  *
  * @author Usuario
@@ -31,10 +35,10 @@ public class wSearches extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        screen = new javax.swing.JTextArea();
+        keyWord = new javax.swing.JButton();
+        searchAuthor = new javax.swing.JButton();
+        seeInformation = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,20 +52,25 @@ public class wSearches extends javax.swing.JFrame {
         jLabel1.setText("Buscar Resumen");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        screen.setColumns(20);
+        screen.setRows(5);
+        jScrollPane1.setViewportView(screen);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 380, 120));
 
-        jButton1.setText("Palabra Clave");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        keyWord.setText("Palabra Clave");
+        jPanel1.add(keyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
-        jButton2.setText("Autor");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        searchAuthor.setText("Autor");
+        searchAuthor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchAuthorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
-        jButton3.setText("Ver Información");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+        seeInformation.setText("Ver Información");
+        jPanel1.add(seeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         back.setText("⬅️");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +90,13 @@ public class wSearches extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void searchAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAuthorActionPerformed
+        String author = JOptionPane.showInputDialog(null, "Ingrese el nombre del autor que busca");
+        Searches search = new Searches(tabla);
+        String info = search.searchAuthor(author);
+        screen.setText(info);
+    }//GEN-LAST:event_searchAuthorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,12 +135,12 @@ public class wSearches extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton keyWord;
+    private javax.swing.JTextArea screen;
+    private javax.swing.JButton searchAuthor;
+    private javax.swing.JButton seeInformation;
     // End of variables declaration//GEN-END:variables
 }

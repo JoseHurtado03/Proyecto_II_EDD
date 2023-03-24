@@ -48,6 +48,7 @@ public class HashTable {
         }
     }
     
+    /*Función hash que genera una clave única a partir de el nombre de un documento*/
     public int hashFunction(Document document){
         String title = document.getTitle();
         int index = 0;
@@ -58,6 +59,7 @@ public class HashTable {
         return index;
     }
     
+    /*Inserta en la HashTable un documento en la posición que indique la clave única*/
     public void insertDocument(Document document){
         int index = hashFunction(document);
         while (getDocuments()[index] != null){
