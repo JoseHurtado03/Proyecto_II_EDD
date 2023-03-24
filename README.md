@@ -28,9 +28,12 @@ palabra clave n: frecuencia con la cual la palabra clave n, almacenada en el rep
 
 Requerimientos Técnicos:
 **La solución debe ser implementada con base en la utilización de tablas de dispersión. Puede, sin embargo, utilizar otros TDA auxiliares.
+
 **La aplicación debe ofrecer una interfaz gráfica al usuario.
+
 **Al comenzar el sistema, un conjunto de investigaciones deben ser precargadas.
-Consideraciones:
+
+***Consideraciones***:
 
      Los proyectos podrán ser sometidos a defensa, es decir, el facilitador convocará al equipo para una revisión presencial.
      Los equipos de trabajo deberán utilizar GitHub para el control de versiones y facilitar el trabajo en equipo de manera remota. En el registro se deberá reflejar la participación activa y significativa de los integrantes. Los proyectos que no tengan interfaz gráfica, serán calificados con 0 (cero).
@@ -43,13 +46,23 @@ Consideraciones:
 Criterios de evaluación
 
 *Funcionalidad: Capacidad para proporcionar las funcionalidades que satisfacen las necesidades explícitas e implícitas bajo unas ciertas condiciones. (40%)
+
 *Adecuación: El programa ofrece todas funcionalidades que respondan a las necesidades, tanto explícitas (contenidas en el documento descriptivo del proyecto) como implícitas; entendiendo como necesidades implícitas, aquellas que no estando descritas en el documento, surgen como resultado de un concienzudo análisis del problema planteado y que aseguran el correcto funcionamiento del programa.
+
 *Exactitud: El programa genera los resultados o efectos correctos o acordados, con el grado necesario de precisión.
+
 Fiabilidad: Capacidad para mantener un nivel especificado de prestaciones cuando se usa bajo ciertas condiciones.
+
 *Madurez: El programa no presenta fallas originadas por errores de programación, análisis o diseño. (10%)
+
 *Tolerancia a fallos: El programa responde adecuadamente al manejo inadecuado del usuario; es decir, mantiene su correcto funcionamiento aun cuando el usuario introduzca datos erróneos o manipule inadecuadamente las interfaces de usuario. (10%)
+
 *Usabilidad: Capacidad del proyecto para ser entendido, aprendido, usado y al mismo tiempo, ser atractivo para el usuario, cuando se usa bajo condiciones específicas.
+
 *Comprensibilidad: El programa ofrece una interfaz de fácil comprensión, facilitando su aprendizaje y correcta utilización. El programa emite mensajes de alerta cuando se introducen valores erróneos. Existen elementos informativos que indican al usuario como operar el programa. (5%)
+
 *Capacidad de ser atractivo: El diseño de la interfaz de usuario, esto es: disposición de controles, esquema de colores, utilización de cajas de diálogo y demás elementos gráficos; es atractivo para el usuario. (5%)
+
 *Eficiencia: Capacidad para proporcionar prestaciones apropiadas, relativas a la cantidad de recursos usados, bajo condiciones determinadas.
+
 *Estructuras de datos: Utiliza eficientemente las estructuras de datos para la solución del problema. (30%)
