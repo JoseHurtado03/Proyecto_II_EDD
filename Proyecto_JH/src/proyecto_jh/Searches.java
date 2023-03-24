@@ -22,26 +22,28 @@ public class Searches {
         this.table = table;
     }
 
-    public Document searchAuthor(String autor) {
+    public String searchAuthor(String autor) {
+        String info = "";
         for (int i = 0; i < table.getDocuments().length; i++) {
             if (table.getDocuments()[i] != null) {
                 if (table.getDocuments()[i].getAuthors().contains(autor)) {
-                    return table.getDocuments()[i];
+                    info += i+"-"+table.getDocuments()[i].getTitle()+"\n";
                 }
             }
         }
-        return null;
+        return info;
     }
     
-    public Document searchKeyWord(String key){
+    public String searchKeyWord(String key){
+        String info = "";
         for (int i = 0; i < table.getDocuments().length; i++) {
             if (table.getDocuments()[i] != null) {
                 if (table.getDocuments()[i].getKeyWords().contains(key)) {
-                    return table.getDocuments()[i];
+                    info += i+"-"+table.getDocuments()[i].getTitle()+"\n";
                 }
             }
         }
-        return null;
+        return info;
     }
     
     /*CONTAR UNA PALABRA DENTRO DE UN STRING*/
