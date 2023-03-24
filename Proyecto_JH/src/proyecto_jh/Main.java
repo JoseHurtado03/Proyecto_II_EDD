@@ -6,23 +6,30 @@ import Windows.wMain;
 public class Main {
 
     public static void main(String[] args) {
+//        /*CREA LA HASHTABLE*/
 //        HashTable table = new HashTable();
 //        table.initTable();
 //        
-//        
+//        /*Inserta elementos y muestra su clave (posición de la HashTable donde se insertó)*/
 //        Document book = new Document("Harry Potter", "JK Rowling", "Mucho texto", "magia, varita");
-//        int key = table.hashFunction(book);
-//        System.out.println(key);
 //        table.insertDocument(book);
-//        
 //        Document doc1 = new Document("SOLID", "José H", "Texto", "POO, interfaz");
 //        Document doc2 = new Document("Potter Harry", "JK Rowling", "Más texto", "Hogwarts");
 //        table.insertDocument(doc1);
 //        table.insertDocument(doc2);
 //        
+//        /*Imprime la HashTable (Solo para mostrar las funciones de arriba)*/
 //        String tablita = table.printHash();
 //        System.out.println(tablita);
+//
+//        /*Realiza búsquedas por Autor y Palabra Clave e imprime el resultado de la búsqueda*/
+//        Searches search = new Searches(table);
+//        Document doc = search.searchAuthor("JK Rowling");
+//        Document docu = search.searchKeyWord("magia");
+//        System.out.println(doc.getTitle());
+//        System.out.println(docu.getTitle());
 
+        /*Interfaces modelo del programa (sirven de molde)*/
         wMain window = new wMain();
         window.setVisible(true);
     }

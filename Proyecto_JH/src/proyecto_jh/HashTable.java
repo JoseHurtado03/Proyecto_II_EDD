@@ -4,18 +4,47 @@ package proyecto_jh;
 import javax.swing.JOptionPane;
 
 public class HashTable {
-    private final int size;
-    Document[] documents;
+    private int size;
+    private Document[] documents;
 
     public HashTable() {
         this.size = 50;
         this.documents = new Document[size];
     }
     
+    
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
+     * @return the documents
+     */
+    public Document[] getDocuments() {
+        return documents;
+    }
+
+    /**
+     * @param documents the documents to set
+     */
+    public void setDocuments(Document[] documents) {
+        this.documents = documents;
+    }
+    
     public void initTable(){
-        documents = new Document[size];
-        for (int i = 0; i < 10; i++) {
-            documents[i] = null;
+        setDocuments(new Document[getSize()]);
+        for (int i = 0; i < size; i++) {
+            getDocuments()[i] = null;
         }
     }
     
@@ -25,28 +54,29 @@ public class HashTable {
         for (int i = 0; i < title.length(); i++) {
             index += title.codePointAt(i);
         }
-        index = index % this.size;
+        index = index % this.getSize();
         return index;
     }
     
     public void insertDocument(Document document){
         int index = hashFunction(document);
-        while (documents[index] != null){
+        while (getDocuments()[index] != null){
             index++;
         }
         JOptionPane.showMessageDialog(null, "La clave del Documento "+document.getTitle()+" es: "+index);
-        documents[index] = document;
+        getDocuments()[index] = document;
     }
     
     public String printHash(){
         String info = "";
-        for (int i = 0; i < size; i++) {
-            if (documents[i] != null) {
-                info += i+"- Título: " + documents[i].getTitle() + " Autor: " + documents[i].getAuthors() + "\n";
+        for (int i = 0; i < getSize(); i++) {
+            if (getDocuments()[i] != null) {
+                info += i+"- Título: " + getDocuments()[i].getTitle() + " Autor: " + getDocuments()[i].getAuthors() + "\n";
             }else{
                 info += i+"- NULL\n";
             }
         }
         return info;
     }
+
 }
