@@ -8,6 +8,7 @@ package Windows;
 import javax.swing.JOptionPane;
 import proyecto_jh.Searches;
 import static Windows.wMain.tabla;
+import proyecto_jh.Function;
 
 /**
  *
@@ -21,6 +22,8 @@ public class wSearches extends javax.swing.JFrame {
     public wSearches() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Combo.setVisible(false);
+        searchAuthor.setVisible(false);
     }
 
     /**
@@ -40,6 +43,8 @@ public class wSearches extends javax.swing.JFrame {
         searchAuthor = new javax.swing.JButton();
         seeInformation = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        Combo = new javax.swing.JComboBox<>();
+        autor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,27 +55,32 @@ public class wSearches extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar Resumen");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         screen.setColumns(20);
         screen.setRows(5);
         jScrollPane1.setViewportView(screen);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 380, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 470, 120));
 
         keyWord.setText("Palabra Clave");
-        jPanel1.add(keyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        jPanel1.add(keyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        searchAuthor.setText("Autor");
+        searchAuthor.setText("Buscar Autor");
         searchAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchAuthorActionPerformed(evt);
             }
         });
-        jPanel1.add(searchAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel1.add(searchAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
 
         seeInformation.setText("Ver Información");
-        jPanel1.add(seeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+        seeInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seeInformationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(seeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
         back.setText("⬅️");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +88,25 @@ public class wSearches extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 310));
+        Combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "\"Selecciona un autor\"" }));
+        Combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 230, -1));
+
+        autor.setText("Autor");
+        autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,11 +118,39 @@ public class wSearches extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void searchAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAuthorActionPerformed
-        String author = JOptionPane.showInputDialog(null, "Ingrese el nombre del autor que busca");
+//        String author = JOptionPane.showInputDialog(null, "Ingrese el nombre del autor que busca");
+        String autorsito = Combo.getSelectedItem().toString();
         Searches search = new Searches(tabla);
-        String info = search.searchAuthor(author);
+        String info = search.searchAuthor(autorsito);
         screen.setText(info);
     }//GEN-LAST:event_searchAuthorActionPerformed
+
+    private void ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboActionPerformed
+        
+    }//GEN-LAST:event_ComboActionPerformed
+
+    private void autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorActionPerformed
+        Function func = new Function();
+        String autores = func.getAllAuthors(tabla);
+        String[] authors = func.createAuthorsArray(autores);
+        Combo.setVisible(true);
+        for (int i = 0; i < authors.length; i++) {
+            Combo.addItem(authors[i]);
+        }
+        searchAuthor.setVisible(true);
+    }//GEN-LAST:event_autorActionPerformed
+
+    private void seeInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeInformationActionPerformed
+        try {
+            Function func = new Function();
+            String indexString = JOptionPane.showInputDialog(null, "Ingrese la clave del documento que desea ver");
+            int index = Integer.parseInt(indexString);
+            String info = func.showDocument(tabla, index);
+            screen.setText(info);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar documento");
+        }
+    }//GEN-LAST:event_seeInformationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +188,8 @@ public class wSearches extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Combo;
+    private javax.swing.JButton autor;
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
