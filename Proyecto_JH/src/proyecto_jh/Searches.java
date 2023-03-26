@@ -22,6 +22,7 @@ public class Searches {
         this.table = table;
     }
 
+    /*Recibe el nombre de un autor y retorna la clave y el título de los documentos donde aparece*/
     public String searchAuthor(String autor) {
         String info = "";
         for (int i = 0; i < table.getDocuments().length; i++) {

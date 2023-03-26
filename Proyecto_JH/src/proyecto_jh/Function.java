@@ -10,6 +10,8 @@ package proyecto_jh;
  * @author Usuario
  */
 public class Function {
+    
+    /*La función crea un String con todos los autores que aparecen en la HashTable*/
     public String getAllAuthors(HashTable tabla) {
         String info = "";
         for (int i = 0; i < tabla.getSize(); i++) {
@@ -25,11 +27,13 @@ public class Function {
         return info;
     }
     
+    /*Recibe un String de los autores y lo convierte en un arreglo, donde cada posición es un autor*/
     public String[] createAuthorsArray(String autores){
         String[] info = autores.split("\n");
         return info;
     }
     
+    /*Crea un String con la información de un documento. Recibe la clave única del documento*/
     public String showDocument(HashTable tabla, int index){
         Document doc = tabla.getDocuments()[index];
         if (doc != null) {
