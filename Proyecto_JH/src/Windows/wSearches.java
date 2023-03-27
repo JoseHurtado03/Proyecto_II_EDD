@@ -24,6 +24,9 @@ public class wSearches extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         Combo.setVisible(false);
         searchAuthor.setVisible(false);
+        jLabel2.setVisible(false);
+        key.setVisible(false);
+        searchKeyWord.setVisible(false);
     }
 
     /**
@@ -45,6 +48,9 @@ public class wSearches extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         Combo = new javax.swing.JComboBox<>();
         autor = new javax.swing.JButton();
+        key = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        searchKeyWord = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,10 +67,15 @@ public class wSearches extends javax.swing.JFrame {
         screen.setRows(5);
         jScrollPane1.setViewportView(screen);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 470, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 470, 150));
 
         keyWord.setText("Palabra Clave");
-        jPanel1.add(keyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        keyWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keyWordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(keyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         searchAuthor.setText("Buscar Autor");
         searchAuthor.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +83,7 @@ public class wSearches extends javax.swing.JFrame {
                 searchAuthorActionPerformed(evt);
             }
         });
-        jPanel1.add(searchAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+        jPanel1.add(searchAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
 
         seeInformation.setText("Ver Información");
         seeInformation.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +91,7 @@ public class wSearches extends javax.swing.JFrame {
                 seeInformationActionPerformed(evt);
             }
         });
-        jPanel1.add(seeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+        jPanel1.add(seeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
 
         back.setText("⬅️");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +115,22 @@ public class wSearches extends javax.swing.JFrame {
                 autorActionPerformed(evt);
             }
         });
-        jPanel1.add(autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+        jPanel1.add(autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
+        jPanel1.add(key, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 150, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 410));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Palabra clave:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        searchKeyWord.setText("Buscar Palabra");
+        searchKeyWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchKeyWordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchKeyWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +176,27 @@ public class wSearches extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_seeInformationActionPerformed
 
+    private void keyWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyWordActionPerformed
+        jLabel2.setVisible(true);
+        key.setVisible(true);
+        searchKeyWord.setVisible(true);
+    }//GEN-LAST:event_keyWordActionPerformed
+
+    private void searchKeyWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchKeyWordActionPerformed
+        try {
+            if (key.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese una palabra clave");
+            } else {
+                Searches search = new Searches(tabla);
+                String info = search.searchKeyWord(key.getText());
+                screen.setText(info);
+                key.setText("");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar la palabra clave");
+        }
+    }//GEN-LAST:event_searchKeyWordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,11 +237,14 @@ public class wSearches extends javax.swing.JFrame {
     private javax.swing.JButton autor;
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField key;
     private javax.swing.JButton keyWord;
     private javax.swing.JTextArea screen;
     private javax.swing.JButton searchAuthor;
+    private javax.swing.JButton searchKeyWord;
     private javax.swing.JButton seeInformation;
     // End of variables declaration//GEN-END:variables
 }

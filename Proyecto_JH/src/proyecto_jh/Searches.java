@@ -22,6 +22,10 @@ public class Searches {
         this.table = table;
     }
 
+    public Document searchDoc(int index){
+        return table.getDocuments()[index];
+    }
+    
     /*Recibe el nombre de un autor y retorna la clave y el título de los documentos donde aparece*/
     public String searchAuthor(String autor) {
         String info = "";
@@ -46,16 +50,4 @@ public class Searches {
         }
         return info;
     }
-    
-    /*CONTAR UNA PALABRA DENTRO DE UN STRING*/
-//    String randomText = "The sky is blue it meets the sea which is also blue";
-//
-//        String text = "blue";
-//        int times = 0;
-//        for (int i = 0; i < randomText.length(); i++) {
-//            if (randomText.substring(i).startsWith(text)) {
-//                times ++;
-//            }
-//        }
-//        System.out.println(randomText + " contains " + text + " " + times + " times");
 }

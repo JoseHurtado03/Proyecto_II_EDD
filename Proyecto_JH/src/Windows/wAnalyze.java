@@ -5,6 +5,12 @@
  */
 package Windows;
 
+import proyecto_jh.Function;
+import static Windows.wMain.tabla;
+import javax.swing.JOptionPane;
+import proyecto_jh.Document;
+import proyecto_jh.Searches;
+
 /**
  *
  * @author Usuario
@@ -30,9 +36,9 @@ public class wAnalyze extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        screen = new javax.swing.JTextArea();
+        showDocuments = new javax.swing.JButton();
+        selectDoc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
 
@@ -42,22 +48,32 @@ public class wAnalyze extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        screen.setColumns(20);
+        screen.setRows(5);
+        jScrollPane1.setViewportView(screen);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 390, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 540, 200));
 
-        jButton1.setText("VER");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        showDocuments.setText("VER");
+        showDocuments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDocumentsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showDocuments, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
 
-        jButton2.setText("SELECCIONAR");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        selectDoc.setText("SELECCIONAR");
+        selectDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectDocActionPerformed(evt);
+            }
+        });
+        jPanel1.add(selectDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Analizar Resumen ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
         back.setText("⬅️");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -65,9 +81,9 @@ public class wAnalyze extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -77,6 +93,26 @@ public class wAnalyze extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void showDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDocumentsActionPerformed
+        Function func = new Function();
+        String info = func.showAllDocuments(tabla);
+        screen.setText(info);
+    }//GEN-LAST:event_showDocumentsActionPerformed
+
+    private void selectDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectDocActionPerformed
+        try {
+            Function func = new Function();
+            Searches searches = new Searches(tabla);
+            String index_s = JOptionPane.showInputDialog(null, "Ingrese la clave del documento que desea analizar");
+            int index = Integer.parseInt(index_s);
+            Document doc = searches.searchDoc(index);
+            String info = func.getInformationToAnalyze(doc);
+            screen.setText(info);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar el documento\n Asegúrese de ingresar correctamente la clave única del documento");
+        }
+    }//GEN-LAST:event_selectDocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,11 +151,11 @@ public class wAnalyze extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea screen;
+    private javax.swing.JButton selectDoc;
+    private javax.swing.JButton showDocuments;
     // End of variables declaration//GEN-END:variables
 }
