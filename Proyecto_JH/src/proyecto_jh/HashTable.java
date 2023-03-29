@@ -8,7 +8,7 @@ public class HashTable {
     private Document[] documents;
 
     public HashTable() {
-        this.size = 50;
+        this.size = 20;
         this.documents = new Document[size];
     }
     
@@ -61,24 +61,28 @@ public class HashTable {
     
     /*Inserta en la HashTable un documento en la posición que indique la clave única*/
     public void insertDocument(Document document){
-        int index = hashFunction(document);
-        while (getDocuments()[index] != null){
-            index++;
+        if (!isInHash(document)) {
+            int index = hashFunction(document);
+            while (getDocuments()[index] != null) {
+                index++;
+            }
+            JOptionPane.showMessageDialog(null, "La clave del Documento " + document.getTitle() + " es: " + index);
+            getDocuments()[index] = document;
+        } else{
+            JOptionPane.showMessageDialog(null, "¡ERROR!\nEl documento ya está registrado");
         }
-        JOptionPane.showMessageDialog(null, "La clave del Documento "+document.getTitle()+" es: "+index);
-        getDocuments()[index] = document;
     }
     
-    public String printHash(){
-        String info = "";
-        for (int i = 0; i < getSize(); i++) {
-            if (getDocuments()[i] != null) {
-                info += i+"- Título: " + getDocuments()[i].getTitle() + " Autor: " + getDocuments()[i].getAuthors() + "\n";
-            }else{
-                info += i+"- NULL\n";
+    /*Verifica si un documento ya existe en la HashTable*/
+    public boolean isInHash(Document doc){
+        boolean aux = false;
+        for (int i = 0; i < this.getDocuments().length; i++) {
+            if (getDocuments()[i] != null){
+                if (getDocuments()[i].compareDocuments(doc)){
+                    aux = true;
+                }
             }
         }
-        return info;
+        return aux;
     }
-
 }

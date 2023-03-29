@@ -21,7 +21,8 @@ public class Searches {
     public void setTable(HashTable table) {
         this.table = table;
     }
-
+    
+    /*Retorna un documento de la HashTable que se indique a través de su clave única*/
     public Document searchDoc(int index){
         return table.getDocuments()[index];
     }
@@ -39,6 +40,7 @@ public class Searches {
         return info;
     }
     
+    /*Recibe una palabra clave y retorna la clave y el título de los documentos donde aparece*/
     public String searchKeyWord(String key){
         String info = "";
         for (int i = 0; i < table.getDocuments().length; i++) {

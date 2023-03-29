@@ -70,6 +70,7 @@ public class Document {
         this.keyWords = keyWords;
     }
     
+    /*Compara si dos documentos son iguales*/
     public boolean compareDocuments(Document document){
         return document.getTitle().equalsIgnoreCase(this.title) && document.getAuthors().equalsIgnoreCase(this.authors);
     }

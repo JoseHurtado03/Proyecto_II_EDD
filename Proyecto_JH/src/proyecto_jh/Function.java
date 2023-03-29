@@ -37,7 +37,7 @@ public class Function {
     public String showDocument(HashTable tabla, int index){
         Document doc = tabla.getDocuments()[index];
         if (doc != null) {
-            String infoDoc = "Título: " + doc.getTitle() + "\n" + "Autores: " + doc.getAuthors() + "\n";
+            String infoDoc = "Título: " + doc.getTitle() + "\n" + "Autores: " + doc.getAuthors() + "\n" + "Palabras Clave: "+doc.getKeyWords()+"\n";
             return infoDoc;
         }
         return "No hay un elemento con esa clave";
