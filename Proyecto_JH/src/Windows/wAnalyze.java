@@ -9,6 +9,7 @@ import proyecto_jh.Function;
 import static Windows.wMain.tabla;
 import javax.swing.JOptionPane;
 import proyecto_jh.Document;
+import proyecto_jh.Order;
 import proyecto_jh.Searches;
 
 /**
@@ -96,8 +97,12 @@ public class wAnalyze extends javax.swing.JFrame {
 
     private void showDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDocumentsActionPerformed
         Function func = new Function();
+        Order orden = new Order();
         String info = func.showAllDocuments(tabla);
-        screen.setText(info);
+        String[] docs = orden.createArrayOfDocs(info);
+        String[] newArray = orden.orderAlphabetic(docs);
+        String information = orden.printNewArray(newArray);
+        screen.setText(information);
     }//GEN-LAST:event_showDocumentsActionPerformed
 
     private void selectDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectDocActionPerformed

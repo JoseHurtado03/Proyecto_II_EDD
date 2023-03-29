@@ -48,7 +48,7 @@ public class Function {
         String info = "";
         for (int i = 0; i < tabla.getSize(); i++) {
             if (tabla.getDocuments()[i] != null){
-                info += i+"- "+tabla.getDocuments()[i].getTitle()+"\n";
+                info += tabla.getDocuments()[i].getTitle()+" CLAVE: "+i+"\n";
             }
         }
         return info;
